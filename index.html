@@ -1,0 +1,120 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+        <template id="element-details-template">
+
+                <style>
+    
+                        a {
+                            text-decoration: none;
+                            color: inherit;
+                        }
+
+                        .card {
+                            max-width: 400px;
+                            padding: 1rem;
+                            box-shadow: var(--box-shadow);
+                            border-radius: 5px;
+                            overflow: hidden;
+                            background-color: var(--backg-color);
+                        }
+                        
+                        .card__image-container {
+                            margin: -1rem -1rem 0rem -1rem;
+                            max-width: 400px;
+                            width: auto;
+                            max-height: min-content;
+                            display: flex;
+                            justify-content: stretch;
+                        }
+    
+                        .card__image-element {
+                            max-width: 400px;
+                        }
+                        
+                        .card__title-element {
+                            font-size: 1.3rem;
+                            font-weight: 600;
+                            margin-top: 1rem;
+                            margin-bottom: 1rem;
+                            color: var(--title-color);
+                        }
+
+                </style>
+
+                <div class="card card--default">
+
+                    <div class="card__image-container">
+                        <img class="card__image-element" src="" alt="">
+                    </div>
+
+                    <a class="card__link-element" href="">
+                        <h4 class="card__title-element"><slot name="title">NEED NAME</slot></h4>
+                        <p class="card__description-element"><slot name="description">NEED DESCRIPTION</slot></p>
+                    </a>
+
+                </div>
+                
+        </template>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Web Component Example</title>
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,400,500,600&display=swap" rel="stylesheet">
+
+    <link href="style.css" rel="stylesheet">
+    <script src="/components.js"></script>
+</head>
+<body>
+
+    <main class="content content--default">
+        <div class="content__posts-container">
+                <element-details image="image.jpg" link="image.jpg">                    
+                    <span slot="title">Name</span>
+                    <span slot="description">
+                        A placeholder inside a web component that users 
+                        can fill with their own markup, with the effect 
+                        of composing different DOM trees together.
+                    </span>
+                </element-details>
+        </div>
+    </main>
+    
+        
+        
+    <script>
+
+            var paragraph = document.createElement("element-details");
+            paragraph.name = "Hello World";
+            paragraph.image = "image.jpg";
+            document.querySelector(".content__posts-container").appendChild(paragraph);
+            console.log(paragraph)
+
+            /********************        
+            fetch("https://bypeople.com/wp-json/freebies/get-freebies?page=1&category=0&search=&commercial=1")
+                .then(data => data.json())
+                .then(data => {
+                    console.log(data);
+                    let container = document.querySelector(".content__posts-container");
+                    container.innerHTML = "";
+                    data.forEach( (post) => {
+                        let paragraph = document.createElement("element-details");
+                        paragraph.name = post.title;
+                        paragraph.image = post.image;
+                        paragraph.link = post.url;
+                        document.querySelector(".content__posts-container").appendChild(paragraph);
+                    });
+                })
+            *********************/
+
+
+
+    </script>
+    
+</body>
+</html>

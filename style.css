@@ -1,0 +1,47 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+:root{
+    --parag-font-family: IBM Plex Sans;
+    --parag-color: #217ac0;
+
+    --title-font-family: IBM Plex Sans;
+    --title-color: #217ac0;
+
+    --backg-color: #ffffff;
+    --box-shadow: 3px 0 10px #0003;
+    --height-100vh: 100vh;
+    --width-100vw: 100vw;
+}
+
+.content {
+    background-color: var(--backg-color);
+    min-height: var(--height-100vh);
+    font-family: var(--parag-font-family);
+    color: var(--parag-color);
+    transition: all .3s;
+}
+
+/* Content modifiers */
+
+.content--default {
+
+}
+
+.content--dark {
+    --parag-color: #ffffff;
+    --title-color: #cecece;
+    --backg-color: #292929;
+}
+
+
+/* Posts container element */
+
+.content__posts-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-gap: 20px;
+    padding: 20px;
+}
